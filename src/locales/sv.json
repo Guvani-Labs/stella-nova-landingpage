@@ -1,0 +1,61 @@
+{
+  "seo": {
+    "home": {
+      "title": "Acme Co — Din tagline här",
+      "description": "Acme Co hjälper företag att växa med tydliga digitala produkter. Byt ut denna text i src/locales/."
+    },
+    "contact": {
+      "title": "Kontakt — Acme Co",
+      "description": "Kontakta Acme Co. Vi återkommer inom ett dygn."
+    }
+  },
+  "nav": {
+    "home": "Hem",
+    "contact": "Kontakt"
+  },
+  "lang": {
+    "switchToEn": "Byt till engelska",
+    "switchToSv": "Byt till svenska",
+    "currentEn": "EN",
+    "currentSv": "SV"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "location": "Plats",
+    "locationValue": "Stockholm, Sverige",
+    "copyright": "© {{year}} Acme Co"
+  },
+  "home": {
+    "eyebrow": "Välkommen",
+    "title": "Bygg något som håller.",
+    "lede": "Byt ut denna starttext mot kundens budskap. Uppdatera src/site.config.ts och src/locales/ först.",
+    "cta": "Hör av dig",
+    "servicesEyebrow": "Tjänster",
+    "servicesTitle": "Vad vi gör",
+    "serviceOneTitle": "Hemsidor",
+    "serviceOneBody": "Snabba, tydliga sajter från skiss till lansering.",
+    "serviceTwoTitle": "Tillväxt",
+    "serviceTwoBody": "SEO och kampanjer med fokus på resultat.",
+    "serviceThreeTitle": "Produkt",
+    "serviceThreeBody": "Mjukvara som växer med ert företag."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Hör av dig.",
+    "lede": "Berätta kort vad ni behöver. Vi återkommer inom ett dygn.",
+    "email": "E-post",
+    "location": "Plats",
+    "locationValue": "Stockholm, Sverige",
+    "name": "Namn",
+    "emailField": "E-post",
+    "company": "Företag (valfritt)",
+    "message": "Meddelande (valfritt)",
+    "submit": "Skicka",
+    "submitting": "Skickar…",
+    "success": "Tack. Vi återkommer inom ett dygn.",
+    "successHoneypot": "Tack — vi hör av oss.",
+    "errorGeneric": "Något gick fel. Försök igen om en stund.",
+    "errorNetwork": "Kunde inte nå servern. Kontrollera anslutningen.",
+    "honeypot": "Webbplats"
+  }
+}

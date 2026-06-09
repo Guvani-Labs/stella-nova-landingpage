@@ -1,0 +1,4 @@
+# Secrets for local Pages Functions (wrangler pages dev). Do not commit .dev.vars.
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=you@example.com
+CONTACT_FROM_EMAIL=Acme Co <onboarding@resend.dev>

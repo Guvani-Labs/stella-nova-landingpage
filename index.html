@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="Acme Co" />
+    <meta
+      name="description"
+      content="Acme Co — replace this description in index.html and src/locales/."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0c0f14" />
+    <meta name="author" content="Acme Co" />
+    <link rel="canonical" href="https://example.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Acme Co" />
+    <meta property="og:title" content="Acme Co — Your tagline here" />
+    <meta
+      property="og:description"
+      content="Acme Co — replace this description in index.html and src/locales/."
+    />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:image" content="https://example.com/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Acme Co — Your tagline here" />
+    <meta
+      name="twitter:description"
+      content="Acme Co — replace this description in index.html and src/locales/."
+    />
+    <meta name="twitter:image" content="https://example.com/og-image.svg" />
+    <title>Acme Co — Your tagline here</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://example.com/#organization",
+            "name": "Acme",
+            "alternateName": "Acme Co",
+            "url": "https://example.com",
+            "logo": "https://example.com/favicon.svg",
+            "email": "hello@example.com"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://example.com/#website",
+            "name": "Acme",
+            "alternateName": "Acme Co",
+            "url": "https://example.com",
+            "publisher": { "@id": "https://example.com/#organization" },
+            "inLanguage": ["sv", "en"]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

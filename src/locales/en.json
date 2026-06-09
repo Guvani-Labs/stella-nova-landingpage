@@ -1,0 +1,61 @@
+{
+  "seo": {
+    "home": {
+      "title": "Acme Co — Your tagline here",
+      "description": "Acme Co helps businesses grow with clear digital products. Replace this copy in src/locales/."
+    },
+    "contact": {
+      "title": "Contact — Acme Co",
+      "description": "Get in touch with Acme Co. We reply within one business day."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "lang": {
+    "switchToEn": "Switch to English",
+    "switchToSv": "Switch to Swedish",
+    "currentEn": "EN",
+    "currentSv": "SV"
+  },
+  "footer": {
+    "contact": "Contact",
+    "location": "Location",
+    "locationValue": "Stockholm, Sweden",
+    "copyright": "© {{year}} Acme Co"
+  },
+  "home": {
+    "eyebrow": "Welcome",
+    "title": "Build something that lasts.",
+    "lede": "Replace this starter copy with your client's message. Update src/site.config.ts and src/locales/ first.",
+    "cta": "Get in touch",
+    "servicesEyebrow": "Services",
+    "servicesTitle": "What we do",
+    "serviceOneTitle": "Websites",
+    "serviceOneBody": "Fast, clear sites from sketch to launch.",
+    "serviceTwoTitle": "Growth",
+    "serviceTwoBody": "SEO and campaigns focused on results.",
+    "serviceThreeTitle": "Product",
+    "serviceThreeBody": "Software built to scale with your business."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Say hello.",
+    "lede": "Tell us briefly what you need. We reply within one business day.",
+    "email": "Email",
+    "location": "Location",
+    "locationValue": "Stockholm, Sweden",
+    "name": "Name",
+    "emailField": "Email",
+    "company": "Company (optional)",
+    "message": "Message (optional)",
+    "submit": "Send",
+    "submitting": "Sending…",
+    "success": "Thanks. We will get back to you within one business day.",
+    "successHoneypot": "Thanks — we will be in touch.",
+    "errorGeneric": "Something went wrong. Please try again shortly.",
+    "errorNetwork": "Could not reach the server. Check your connection.",
+    "honeypot": "Website"
+  }
+}
