@@ -1,4 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#111"/>
-  <text x="32" y="42" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="28" font-weight="700">A</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16293c"/>
+      <stop offset="1" stop-color="#0a131d"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="18" y1="8" x2="46" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#efdcab"/>
+      <stop offset="0.5" stop-color="#c7a25a"/>
+      <stop offset="1" stop-color="#a87f3c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="32" cy="26" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#33506e" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#33506e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <rect width="64" height="64" rx="14" fill="url(#glow)"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="11.5" fill="none" stroke="#c7a25a" stroke-opacity="0.45" stroke-width="1"/>
+
+  <!-- compass star: diagonal rays (subtle) -->
+  <path d="M32 28 L43.3 20.7 L36 32 L43.3 43.3 L32 36 L20.7 43.3 L28 32 L20.7 20.7 Z"
+        fill="#c7a25a" fill-opacity="0.45"/>
+
+  <!-- compass star: cardinal points (bright) -->
+  <path d="M32 6 L35.9 28.1 L58 32 L35.9 35.9 L32 58 L28.1 35.9 L6 32 L28.1 28.1 Z"
+        fill="url(#brass)"/>
+
+  <!-- center pip -->
+  <circle cx="32" cy="32" r="2.4" fill="#0a131d"/>
 </svg>

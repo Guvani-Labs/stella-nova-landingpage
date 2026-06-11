@@ -1,73 +1,73 @@
 import { useEffect, useState } from "react";
-import { NavLink, Route, Routes, useLocation } from "react-router-dom";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import { usePageSeo } from "./hooks/usePageSeo";
-import { useTranslation } from "./lib/i18n";
-import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
-import { site } from "./site.config";
+
+const NAV = [
+  { href: "#arvet", label: "Arvet" },
+  { href: "#ombord", label: "Livet ombord" },
+  { href: "#galleri", label: "Galleri" },
+  { href: "#specifikation", label: "Specifikation" },
+];
 
 export default function App() {
-  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useTranslation();
-  usePageSeo();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-  }, [pathname]);
-
-  useEffect(() => {
-    if (pathname !== "/") {
-      setScrolled(true);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
-
-  const isHome = pathname === "/";
+  }, []);
 
   return (
-    <div
-      className={`layout${scrolled ? " scrolled" : ""}${
-        isHome ? "" : " offset"
-      }`}
-    >
+    <div className={`layout${scrolled ? " scrolled" : ""}`}>
       <header className="header">
-        <NavLink to="/" className="logo" end>
-          {site.shortName}
-        </NavLink>
-        <nav className="nav">
-          <NavLink to="/" end>
-            {t("nav.home")}
-          </NavLink>
-          <NavLink to={site.routes.contact}>{t("nav.contact")}</NavLink>
-          <LanguageSwitcher />
+        <a href="#top" className="logo">
+          <span className="logo-mark">Stella&nbsp;Nova</span>
+          <span className="logo-sub">Classic Motor Yacht</span>
+        </a>
+
+        <nav className={`nav${menuOpen ? " open" : ""}`}>
+          {NAV.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+          <a href="#kontakt" className="nav-cta" onClick={() => setMenuOpen(false)}>
+            Anmäl intresse
+          </a>
         </nav>
+
+        <button
+          type="button"
+          className={`menu-toggle${menuOpen ? " open" : ""}`}
+          aria-label="Meny"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </header>
+
       <main className="main">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path={site.routes.contact} element={<ContactPage />} />
-        </Routes>
+        <HomePage />
       </main>
+
       <footer className="footer">
-        <div className="footer-grid">
-          <div>
-            <p className="footer-label">{t("footer.contact")}</p>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <span className="logo-mark">Stella Nova</span>
+            <p>Klassisk motoryacht · Byggd 1971</p>
           </div>
-          <div>
-            <p className="footer-label">{t("footer.location")}</p>
-            <p>{t("footer.locationValue")}</p>
+          <div className="footer-meta">
+            <p>Saltsjöbaden, Sverige</p>
+            <p>
+              © {new Date().getFullYear()} Stella Nova. A true gentleman's yacht.
+            </p>
           </div>
         </div>
-        <p className="footer-meta">
-          {t("footer.copyright", { year: new Date().getFullYear() })}
-        </p>
       </footer>
     </div>
   );
