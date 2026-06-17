@@ -1,8 +1,10 @@
 import { site, type Language } from "../site.config";
+import { nap, SITE_ORIGIN } from "./site-nap";
+import { buildSchemaGraph } from "./schema-graph";
 
-export const SITE_ORIGIN = site.origin;
 export const SITE_NAME = site.name;
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.svg`;
+export const DEFAULT_OG_IMAGE = nap.ogImage;
+export const DEFAULT_OG_IMAGE_ALT = site.ogImageAlt;
 
 export type SeoConfig = {
   title: string;
@@ -10,6 +12,7 @@ export type SeoConfig = {
   path: string;
   lang: Language;
   image?: string;
+  imageAlt?: string;
 };
 
 function upsertMeta(
@@ -47,55 +50,7 @@ function upsertJsonLd(description: string, lang: Language): void {
     document.head.appendChild(script);
   }
 
-  script.textContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": `${SITE_ORIGIN}/#organization`,
-        name: site.shortName,
-        alternateName: SITE_NAME,
-        url: SITE_ORIGIN,
-        logo: `${SITE_ORIGIN}/favicon.svg`,
-        email: site.email,
-        description,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: site.location.city,
-          addressCountry: site.location.country,
-        },
-      },
-      {
-        "@type": "WebSite",
-        "@id": `${SITE_ORIGIN}/#website`,
-        name: site.shortName,
-        alternateName: SITE_NAME,
-        url: SITE_ORIGIN,
-        publisher: { "@id": `${SITE_ORIGIN}/#organization` },
-        inLanguage: lang === "sv" ? ["sv", "en"] : ["en", "sv"],
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": `${SITE_ORIGIN}/#service`,
-        name: SITE_NAME,
-        url: SITE_ORIGIN,
-        email: site.email,
-        image: DEFAULT_OG_IMAGE,
-        description,
-        parentOrganization: { "@id": `${SITE_ORIGIN}/#organization` },
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: site.location.city,
-          addressCountry: site.location.country,
-        },
-        areaServed: {
-          "@type": "Country",
-          name: lang === "sv" ? "Sverige" : "Sweden",
-        },
-        knowsAbout: site.knowsAbout,
-      },
-    ],
-  });
+  script.textContent = JSON.stringify(buildSchemaGraph(description, lang));
 }
 
 export function applySeo({
@@ -104,6 +59,7 @@ export function applySeo({
   path,
   lang,
   image = DEFAULT_OG_IMAGE,
+  imageAlt = DEFAULT_OG_IMAGE_ALT,
 }: SeoConfig): void {
   const url = path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
 
@@ -121,11 +77,13 @@ export function applySeo({
   upsertMeta("property", "og:url", url);
   upsertMeta("property", "og:locale", lang === "sv" ? "sv_SE" : "en_US");
   upsertMeta("property", "og:image", image);
+  upsertMeta("property", "og:image:alt", imageAlt);
 
   upsertMeta("name", "twitter:card", "summary_large_image");
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
   upsertMeta("name", "twitter:image", image);
+  upsertMeta("name", "twitter:image:alt", imageAlt);
 
   upsertJsonLd(description, lang);
 }

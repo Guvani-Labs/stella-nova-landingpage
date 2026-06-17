@@ -1,41 +1,60 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { usePageSeo } from "./hooks/usePageSeo";
+import { nap } from "./lib/site-nap";
+import { YACHT_SECTIONS, sectionPath } from "./lib/yacht-sections";
+import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
-
-const NAV = [
-  { href: "#arvet", label: "Arvet" },
-  { href: "#ombord", label: "Livet ombord" },
-  { href: "#galleri", label: "Galleri" },
-  { href: "#specifikation", label: "Specifikation" },
-];
+import { site } from "./site.config";
 
 export default function App() {
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHome = pathname === "/";
+
+  usePageSeo();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   return (
-    <div className={`layout${scrolled ? " scrolled" : ""}`}>
+    <div className={`layout${scrolled ? " scrolled" : ""}${isHome ? "" : " offset"}`}>
       <header className="header">
-        <a href="#top" className="logo">
+        <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
           <span className="logo-mark">Stella&nbsp;Nova</span>
           <span className="logo-sub">Classic Motor Yacht</span>
-        </a>
+        </Link>
 
-        <nav className={`nav${menuOpen ? " open" : ""}`}>
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+        <nav className={`nav${menuOpen ? " open" : ""}`} aria-label="Huvudmeny">
+          {YACHT_SECTIONS.map((item) => (
+            <a
+              key={item.id}
+              href={sectionPath(`#${item.id}`, isHome)}
+              onClick={() => setMenuOpen(false)}
+            >
               {item.label}
             </a>
           ))}
-          <a href="#kontakt" className="nav-cta" onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to={site.routes.contact}
+            className="nav-cta"
+            onClick={() => setMenuOpen(false)}
+          >
             Anmäl intresse
-          </a>
+          </NavLink>
         </nav>
 
         <button
@@ -52,22 +71,42 @@ export default function App() {
       </header>
 
       <main className="main">
-        <HomePage />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path={site.routes.contact} element={<ContactPage />} />
+        </Routes>
       </main>
 
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-brand">
             <span className="logo-mark">Stella Nova</span>
-            <p>Klassisk motoryacht · Byggd 1971</p>
+            <p>Klassisk motoryacht · Byggd 1971 · Säljes</p>
           </div>
-          <div className="footer-meta">
-            <p>Saltsjöbaden, Sverige</p>
+
+          <div className="footer-links">
+            <p className="footer-label">På sidan</p>
+            <ul>
+              {YACHT_SECTIONS.map((item) => (
+                <li key={item.id}>
+                  <Link to={item.path}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-contact">
+            <p className="footer-label">Kontakt</p>
+            <p>{nap.boat.locationLabel.sv}</p>
+            <a href={`mailto:${nap.email}`}>{nap.email}</a>
             <p>
-              © {new Date().getFullYear()} Stella Nova. A true gentleman's yacht.
+              <Link to={site.routes.contact}>Anmäl intresse</Link>
             </p>
           </div>
         </div>
+        <p className="footer-copy">
+          © {new Date().getFullYear()} Stella Nova. A true gentleman's yacht.
+        </p>
       </footer>
     </div>
   );

@@ -11,3 +11,6 @@ dist-ssr
 .DS_Store
 .wrangler
 .dev.vars
+
+# Guvani internal docs — not for client repo / production
+/docs/

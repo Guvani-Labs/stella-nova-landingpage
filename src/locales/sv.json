@@ -1,12 +1,12 @@
 {
   "seo": {
     "home": {
-      "title": "Acme Co — Din tagline här",
-      "description": "Acme Co hjälper företag att växa med tydliga digitala produkter. Byt ut denna text i src/locales/."
+      "title": "Stella Nova — 27 m klassisk motoryacht till salu | Saltsjöbaden",
+      "description": "Stella Nova — en klassisk 27-meters motoryacht från 1971, byggd för greve Lennart Bernadotte och totalrenoverad 2003–2006. A true gentleman's yacht. Säljes."
     },
     "contact": {
-      "title": "Kontakt — Acme Co",
-      "description": "Kontakta Acme Co. Vi återkommer inom ett dygn."
+      "title": "Kontakt — Stella Nova | Anmäl intresse",
+      "description": "Anmäl intresse i Stella Nova, en totalrenoverad 27-meters klassisk motoryacht i Saltsjöbaden. Boka privat visning eller ställ frågor — utan förpliktelser."
     }
   },
   "nav": {
@@ -22,40 +22,27 @@
   "footer": {
     "contact": "Kontakt",
     "location": "Plats",
-    "locationValue": "Stockholm, Sverige",
-    "copyright": "© {{year}} Acme Co"
-  },
-  "home": {
-    "eyebrow": "Välkommen",
-    "title": "Bygg något som håller.",
-    "lede": "Byt ut denna starttext mot kundens budskap. Uppdatera src/site.config.ts och src/locales/ först.",
-    "cta": "Hör av dig",
-    "servicesEyebrow": "Tjänster",
-    "servicesTitle": "Vad vi gör",
-    "serviceOneTitle": "Hemsidor",
-    "serviceOneBody": "Snabba, tydliga sajter från skiss till lansering.",
-    "serviceTwoTitle": "Tillväxt",
-    "serviceTwoBody": "SEO och kampanjer med fokus på resultat.",
-    "serviceThreeTitle": "Produkt",
-    "serviceThreeBody": "Mjukvara som växer med ert företag."
+    "locationValue": "Saltsjöbaden, Sverige",
+    "copyright": "© {{year}} Stella Nova"
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Hör av dig.",
-    "lede": "Berätta kort vad ni behöver. Vi återkommer inom ett dygn.",
+    "title": "Anmäl ditt intresse",
+    "lede": "Vill du veta mer eller boka en privat visning? Lämna dina uppgifter så återkommer vi personligen — utan förpliktelser.",
     "email": "E-post",
     "location": "Plats",
-    "locationValue": "Stockholm, Sverige",
+    "locationValue": "Saltsjöbaden, Sverige",
     "name": "Namn",
     "emailField": "E-post",
-    "company": "Företag (valfritt)",
-    "message": "Meddelande (valfritt)",
-    "submit": "Skicka",
+    "phone": "Telefon",
+    "message": "Meddelande",
+    "messagePlaceholder": "Berätta gärna kort om ditt intresse…",
+    "submit": "Skicka intresseanmälan",
     "submitting": "Skickar…",
-    "success": "Tack. Vi återkommer inom ett dygn.",
+    "success": "Tack! Din intresseanmälan har skickats. Vi återkommer personligen inom kort.",
     "successHoneypot": "Tack — vi hör av oss.",
     "errorGeneric": "Något gick fel. Försök igen om en stund.",
-    "errorNetwork": "Kunde inte nå servern. Kontrollera anslutningen.",
+    "errorNetwork": "Kunde inte ansluta. Kontrollera din uppkoppling och försök igen.",
     "honeypot": "Webbplats"
   }
 }

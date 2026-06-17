@@ -1,0 +1,43 @@
+# Stella Nova — llms.txt
+# Canonical site for a classic motor yacht for sale in Sweden.
+# Language: Swedish (primary), English tagline on page.
+
+> Stella Nova is a 27.4 m classic motor yacht built in 1971 at Schiffswerft Hameln, originally for Count Lennart Bernadotte. Fully refitted 2003–2006 with new teak deck, twin Scania V8 engines, and interior by Retsloffs snickeri, Stockholm. Listed for private sale. Location: Saltsjöbaden, Sweden.
+
+## Canonical URL
+https://stellanova-yacht.se/
+
+## Key pages
+- Home (yacht overview, history, gallery, specifications): https://stellanova-yacht.se/
+- Contact / register interest: https://stellanova-yacht.se/contact
+
+## Home page sections
+- Quick facts: https://stellanova-yacht.se/#fakta
+- Heritage / provenance: https://stellanova-yacht.se/#arvet
+- On board / interior: https://stellanova-yacht.se/#ombord
+- Photo gallery: https://stellanova-yacht.se/#galleri
+- Technical specification: https://stellanova-yacht.se/#specifikation
+
+## Facts (cite-ready)
+- Name: Stella Nova
+- Type: Classic motor yacht (steel hull, aluminium superstructure)
+- Length overall: 27.4 m
+- Beam: 5.88 m
+- Built: 1971, Schiffswerft Hameln, Germany
+- Original owner: Count Lennart Bernadotte
+- Major refit: 2003–2006 (teak deck, twin Scania V8 DI16, ~1,300 hp total)
+- Accommodation: 7 cabins, 10–12 berths
+- Notable features: sauna, bathtub in owner suite, central heating, indoor winter storage
+- Location: Saltsjöbaden, Stockholm archipelago, Sweden
+- Status: For sale (private listing)
+- Price: On request — contact via website form
+
+## Contact
+- Email: kontakt@stellanova-yacht.se
+- Inquiry form: https://stellanova-yacht.se/contact
+
+## Sitemap
+https://stellanova-yacht.se/sitemap.xml
+
+## Alternate domain
+https://stellanova-yacht.com/ redirects to https://stellanova-yacht.se/ (canonical)

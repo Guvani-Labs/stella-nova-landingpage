@@ -1,5 +1,11 @@
 /// <reference types="@cloudflare/workers-types" />
 
+import {
+  getResendConfig,
+  sendContactEmailViaResend,
+  type ResendEnv,
+} from "../../modules/resend/send-contact-email";
+
 interface ContactPayload {
   name: string;
   email: string;
@@ -8,11 +14,7 @@ interface ContactPayload {
   lang?: string;
 }
 
-interface Env {
-  RESEND_API_KEY?: string;
-  CONTACT_TO_EMAIL?: string;
-  CONTACT_FROM_EMAIL?: string;
-}
+type Env = ResendEnv;
 
 const MAX = { name: 120, email: 254, company: 160, message: 8000 } as const;
 
@@ -105,12 +107,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ ok: false, error: m.message }, 400);
   }
 
-  const to = env.CONTACT_TO_EMAIL?.trim();
-  const apiKey = env.RESEND_API_KEY?.trim();
-  const from =
-    env.CONTACT_FROM_EMAIL?.trim() || "Site contact <onboarding@resend.dev>";
-
-  if (!apiKey || !to) {
+  const resendConfig = getResendConfig(env);
+  if (!resendConfig) {
     console.error("Contact API: missing RESEND_API_KEY or CONTACT_TO_EMAIL");
     return json({ ok: false, error: m.serverError }, 503);
   }
@@ -142,25 +140,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     )}</pre>
   `;
 
-  const resend = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${apiKey}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: email,
-      subject,
-      text,
-      html,
-    }),
+  const result = await sendContactEmailViaResend(resendConfig.apiKey, {
+    to: resendConfig.to,
+    from: resendConfig.from,
+    replyTo: email,
+    subject,
+    text,
+    html,
   });
 
-  if (!resend.ok) {
-    const errText = await resend.text().catch(() => "");
-    console.error("Resend error", resend.status, errText);
+  if (!result.ok) {
+    console.error("Resend error", result.status, result.errorText);
     return json({ ok: false, error: m.sendFailed }, 502);
   }
 

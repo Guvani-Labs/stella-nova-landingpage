@@ -1,0 +1,4 @@
+# Add these lines to .gitignore when starting a CLIENT project from this template.
+# Do NOT add this file or /docs/ to .gitignore in guvani-site-starter itself.
+
+/docs/

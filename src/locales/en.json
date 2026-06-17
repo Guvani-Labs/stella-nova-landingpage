@@ -1,12 +1,12 @@
 {
   "seo": {
     "home": {
-      "title": "Acme Co — Your tagline here",
-      "description": "Acme Co helps businesses grow with clear digital products. Replace this copy in src/locales/."
+      "title": "Stella Nova — 27 m classic motor yacht for sale | Saltsjöbaden",
+      "description": "Stella Nova — a classic 27-metre motor yacht from 1971, built for Count Lennart Bernadotte and fully refitted 2003–2006. A true gentleman's yacht. For sale."
     },
     "contact": {
-      "title": "Contact — Acme Co",
-      "description": "Get in touch with Acme Co. We reply within one business day."
+      "title": "Contact — Stella Nova | Register interest",
+      "description": "Register your interest in Stella Nova, a fully refitted 27-metre classic motor yacht in Saltsjöbaden. Book a private viewing or ask a question — no obligation."
     }
   },
   "nav": {
@@ -22,40 +22,27 @@
   "footer": {
     "contact": "Contact",
     "location": "Location",
-    "locationValue": "Stockholm, Sweden",
-    "copyright": "© {{year}} Acme Co"
-  },
-  "home": {
-    "eyebrow": "Welcome",
-    "title": "Build something that lasts.",
-    "lede": "Replace this starter copy with your client's message. Update src/site.config.ts and src/locales/ first.",
-    "cta": "Get in touch",
-    "servicesEyebrow": "Services",
-    "servicesTitle": "What we do",
-    "serviceOneTitle": "Websites",
-    "serviceOneBody": "Fast, clear sites from sketch to launch.",
-    "serviceTwoTitle": "Growth",
-    "serviceTwoBody": "SEO and campaigns focused on results.",
-    "serviceThreeTitle": "Product",
-    "serviceThreeBody": "Software built to scale with your business."
+    "locationValue": "Saltsjöbaden, Sweden",
+    "copyright": "© {{year}} Stella Nova"
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Say hello.",
-    "lede": "Tell us briefly what you need. We reply within one business day.",
+    "title": "Register your interest",
+    "lede": "Would you like to know more or book a private viewing? Leave your details and we will get back to you personally — no obligation.",
     "email": "Email",
     "location": "Location",
-    "locationValue": "Stockholm, Sweden",
+    "locationValue": "Saltsjöbaden, Sweden",
     "name": "Name",
     "emailField": "Email",
-    "company": "Company (optional)",
-    "message": "Message (optional)",
-    "submit": "Send",
+    "phone": "Phone",
+    "message": "Message",
+    "messagePlaceholder": "Tell us briefly about your interest…",
+    "submit": "Send inquiry",
     "submitting": "Sending…",
-    "success": "Thanks. We will get back to you within one business day.",
+    "success": "Thank you. Your inquiry has been sent. We will be in touch shortly.",
     "successHoneypot": "Thanks — we will be in touch.",
     "errorGeneric": "Something went wrong. Please try again shortly.",
-    "errorNetwork": "Could not reach the server. Check your connection.",
+    "errorNetwork": "Could not connect. Check your connection and try again.",
     "honeypot": "Website"
   }
 }

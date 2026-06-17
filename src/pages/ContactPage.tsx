@@ -1,7 +1,9 @@
 import { type FormEvent, useState } from "react";
 import { useLanguage } from "../hooks/useLanguage";
 import { useTranslation } from "../lib/i18n";
-import { site } from "../site.config";
+import { nap } from "../lib/site-nap";
+
+const img = (name: string) => `/images/${name}`;
 
 type SubmitState =
   | { status: "idle" }
@@ -45,10 +47,12 @@ export function ContactPage() {
         error?: string;
       } | null;
       if (!res.ok) {
-        const showApiError = res.status === 400 && data?.error;
         setState({
           status: "error",
-          message: showApiError ? data.error! : t("contact.errorGeneric"),
+          message:
+            res.status === 400 && data?.error
+              ? data.error!
+              : t("contact.errorGeneric"),
         });
         return;
       }
@@ -60,26 +64,27 @@ export function ContactPage() {
   }
 
   return (
-    <div className="page contact-page">
-      <header className="contact-head">
-        <p className="eyebrow">{t("contact.eyebrow")}</p>
-        <h1 className="contact-title">{t("contact.title")}</h1>
-        <p className="lede">{t("contact.lede")}</p>
-      </header>
-
-      <div className="contact-grid">
-        <aside className="contact-info">
-          <div className="contact-info-block">
-            <p className="footer-label">{t("contact.email")}</p>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-          </div>
-          <div className="contact-info-block">
+    <section
+      className="contact contact-page"
+      id="kontakt"
+      style={{ backgroundImage: `url(${img("stella-nova-2008-112.jpg")})` }}
+      aria-label="Kontakt — anmäl intresse i Stella Nova"
+    >
+      <div className="contact-overlay" aria-hidden="true" />
+      <div className="contact-inner reveal">
+        <div className="contact-intro">
+          <p className="eyebrow light">{t("contact.eyebrow")}</p>
+          <h1 className="contact-title">{t("contact.title")}</h1>
+          <p>{t("contact.lede")}</p>
+          <div className="contact-meta">
             <p className="footer-label">{t("contact.location")}</p>
-            <p>{t("contact.locationValue")}</p>
+            <p>{nap.boat.locationLabel.sv}</p>
+            <p className="footer-label">{t("contact.email")}</p>
+            <a href={`mailto:${nap.email}`}>{nap.email}</a>
           </div>
-        </aside>
+        </div>
 
-        <div className="contact-form-wrap">
+        <div className="contact-card">
           {state.status === "success" ? (
             <p className="notice success">{state.message}</p>
           ) : null}
@@ -87,22 +92,31 @@ export function ContactPage() {
             <p className="notice error">{state.message}</p>
           ) : null}
 
-          <form className="form contact-form" onSubmit={onSubmit}>
+          <form className="form" onSubmit={onSubmit}>
             <label className="field">
               <span>{t("contact.name")}</span>
               <input name="name" type="text" autoComplete="name" required />
             </label>
             <label className="field">
               <span>{t("contact.emailField")}</span>
-              <input name="email" type="email" autoComplete="email" required />
+              <input
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+              />
             </label>
             <label className="field">
-              <span>{t("contact.company")}</span>
-              <input name="company" type="text" autoComplete="organization" />
+              <span>{t("contact.phone")}</span>
+              <input name="company" type="tel" autoComplete="tel" />
             </label>
             <label className="field">
               <span>{t("contact.message")}</span>
-              <textarea name="message" rows={6} />
+              <textarea
+                name="message"
+                rows={4}
+                placeholder={t("contact.messagePlaceholder")}
+              />
             </label>
 
             <div className="hp" aria-hidden="true">
@@ -118,7 +132,7 @@ export function ContactPage() {
             </div>
 
             <button
-              className="button primary contact-submit"
+              className="button primary block"
               type="submit"
               disabled={state.status === "submitting"}
             >
@@ -129,6 +143,6 @@ export function ContactPage() {
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

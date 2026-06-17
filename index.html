@@ -2,38 +2,147 @@
 <html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="application-name" content="Stella Nova" />
     <meta
       name="description"
-      content="Stella Nova — en klassisk 27-meters motoryacht från 1971, byggd för greve Lennart Bernadotte och totalrenoverad. A true gentleman's yacht. Säljes."
+      content="Stella Nova — en klassisk 27-meters motoryacht från 1971, byggd för greve Lennart Bernadotte och totalrenoverad 2003–2006. A true gentleman's yacht. Säljes."
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0c1824" />
     <meta name="author" content="Stella Nova" />
-    <link rel="canonical" href="https://stella-nova.example.com/" />
+    <link rel="canonical" href="https://stellanova-yacht.se/" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/stella-nova-ext-5-1.jpg"
+      fetchpriority="high"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Stella Nova" />
-    <meta property="og:title" content="Stella Nova — A true gentleman's yacht" />
+    <meta
+      property="og:title"
+      content="Stella Nova — 27 m klassisk motoryacht till salu | Saltsjöbaden"
+    />
     <meta
       property="og:description"
-      content="Klassisk 27-meters motoryacht från 1971, totalrenoverad. Säljes."
+      content="Stella Nova — en klassisk 27-meters motoryacht från 1971, totalrenoverad. A true gentleman's yacht. Säljes."
     />
-    <meta property="og:url" content="https://stella-nova.example.com/" />
+    <meta property="og:url" content="https://stellanova-yacht.se/" />
     <meta property="og:locale" content="sv_SE" />
-    <meta property="og:image" content="/images/stella-nova-2008-298.jpg" />
+    <meta
+      property="og:image"
+      content="https://stellanova-yacht.se/images/stella-nova-2008-298.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="Stella Nova under gång i kvällsljus — klassisk 27-meters motoryacht till salu"
+    />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stella Nova — A true gentleman's yacht" />
+    <meta
+      name="twitter:title"
+      content="Stella Nova — 27 m klassisk motoryacht till salu | Saltsjöbaden"
+    />
     <meta
       name="twitter:description"
-      content="Klassisk 27-meters motoryacht från 1971, totalrenoverad. Säljes."
+      content="Stella Nova — en klassisk 27-meters motoryacht från 1971, totalrenoverad. Säljes."
     />
-    <meta name="twitter:image" content="/images/stella-nova-2008-298.jpg" />
-    <title>Stella Nova — A true gentleman's yacht</title>
+    <meta
+      name="twitter:image"
+      content="https://stellanova-yacht.se/images/stella-nova-2008-298.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Stella Nova under gång i kvällsljus — klassisk 27-meters motoryacht till salu"
+    />
+    <title>Stella Nova — 27 m klassisk motoryacht till salu | Saltsjöbaden</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://stellanova-yacht.se/#organization",
+            "name": "Stella Nova",
+            "legalName": "Stella Nova",
+            "url": "https://stellanova-yacht.se",
+            "logo": "https://stellanova-yacht.se/favicon.svg",
+            "email": "kontakt@stellanova-yacht.se",
+            "foundingDate": "1971",
+            "knowsAbout": [
+              "Klassiska motoryachter",
+              "Yachtförsäljning",
+              "Stockholms skärgård",
+              "Totalrenoverade yachts",
+              "Stålskrov",
+              "Motoryacht till salu"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Saltsjöbaden",
+              "addressRegion": "Stockholms län",
+              "addressCountry": "SE"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://stellanova-yacht.se/#website",
+            "name": "Stella Nova",
+            "url": "https://stellanova-yacht.se",
+            "publisher": { "@id": "https://stellanova-yacht.se/#organization" },
+            "inLanguage": ["sv", "en"]
+          },
+          {
+            "@type": "Place",
+            "@id": "https://stellanova-yacht.se/#location",
+            "name": "Saltsjöbaden",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Saltsjöbaden",
+              "addressRegion": "Stockholms län",
+              "addressCountry": "SE"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://stellanova-yacht.se/#listing-service",
+            "name": "Försäljning av klassisk motoryacht",
+            "provider": { "@id": "https://stellanova-yacht.se/#organization" },
+            "areaServed": { "@type": "Country", "name": "Sverige" },
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://stellanova-yacht.se/contact",
+              "serviceEmail": "kontakt@stellanova-yacht.se"
+            }
+          },
+          {
+            "@type": ["Product", "Vehicle"],
+            "additionalType": "https://schema.org/Boat",
+            "@id": "https://stellanova-yacht.se/#yacht",
+            "name": "Stella Nova",
+            "description": "Klassisk 27-meters motoryacht från 1971, totalrenoverad. Säljes.",
+            "image": [
+              "https://stellanova-yacht.se/images/stella-nova-2008-298.jpg",
+              "https://stellanova-yacht.se/images/stella-nova-ext-5-1.jpg"
+            ],
+            "category": "Motor yacht",
+            "productionDate": "1971",
+            "location": { "@id": "https://stellanova-yacht.se/#location" },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://stellanova-yacht.se/contact",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/UsedCondition",
+              "seller": { "@id": "https://stellanova-yacht.se/#organization" }
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
