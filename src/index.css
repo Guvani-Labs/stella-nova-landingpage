@@ -715,6 +715,12 @@ h2 {
 }
 
 /* ---------- Contact ---------- */
+.contact-page .contact-inner.reveal,
+.contact-page .contact-inner {
+  opacity: 1;
+  transform: none;
+}
+
 .contact-page {
   min-height: calc(100vh - var(--header-h));
   padding-top: calc(var(--header-h) + 2rem);

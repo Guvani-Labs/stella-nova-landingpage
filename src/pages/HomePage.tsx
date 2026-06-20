@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useScrollReveal } from "../hooks/useScrollReveal";
 import { site } from "../site.config";
 
 const img = (name: string) => `/images/${name}`;
@@ -176,8 +175,6 @@ const FACTS: Array<{ q: string; a: string }> = [
 ];
 
 export function HomePage() {
-  useScrollReveal();
-
   return (
     <div className="home" id="top">
       <section

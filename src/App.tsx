@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { usePageSeo } from "./hooks/usePageSeo";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { nap } from "./lib/site-nap";
 import { YACHT_SECTIONS, sectionPath } from "./lib/yacht-sections";
 import { ContactPage } from "./pages/ContactPage";
@@ -14,6 +15,7 @@ export default function App() {
   const isHome = pathname === "/";
 
   usePageSeo();
+  useScrollReveal(pathname);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
