@@ -7,6 +7,13 @@ const SCHEMA_IMAGES = [
   `${SITE_ORIGIN}/images/stella-nova-1.jpg`,
 ];
 
+const postalAddress = {
+  "@type": "PostalAddress" as const,
+  addressLocality: nap.address.addressLocality,
+  addressRegion: nap.address.addressRegion,
+  addressCountry: nap.address.addressCountry,
+};
+
 export function buildSchemaGraph(description: string, lang: NapLanguage) {
   const areaServed = lang === "sv" ? "Sverige" : "Sweden";
   const listingServiceName =
@@ -18,29 +25,23 @@ export function buildSchemaGraph(description: string, lang: NapLanguage) {
       ? "Privat försäljning av den totalrenoverade 27-meters motoryachten Stella Nova i Saltsjöbaden."
       : "Private sale of the fully refitted 27-metre motor yacht Stella Nova in Saltsjöbaden.";
 
+  const sellerId = `${SITE_ORIGIN}/#seller`;
+  const yachtId = `${SITE_ORIGIN}/#yacht`;
+  const offerId = `${SITE_ORIGIN}/#offer`;
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": `${SITE_ORIGIN}/#organization`,
-        name: nap.displayName,
-        legalName: nap.legalName,
-        alternateName: nap.displayName,
-        url: nap.url,
-        logo: nap.logo,
+        "@type": "Person",
+        "@id": sellerId,
+        name: nap.seller.label[lang],
+        description: nap.seller.description[lang],
         email: nap.email,
         ...(nap.telephone ? { telephone: nap.telephone } : {}),
-        description,
-        foundingDate: String(nap.boat.yearBuilt),
         knowsAbout: [...nap.knowsAbout],
         ...(nap.sameAs.length > 0 ? { sameAs: [...nap.sameAs] } : {}),
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: nap.address.addressLocality,
-          addressRegion: nap.address.addressRegion,
-          addressCountry: nap.address.addressCountry,
-        },
+        address: postalAddress,
       },
       {
         "@type": "WebSite",
@@ -48,26 +49,21 @@ export function buildSchemaGraph(description: string, lang: NapLanguage) {
         name: nap.displayName,
         alternateName: nap.displayName,
         url: SITE_ORIGIN,
-        publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+        publisher: { "@id": sellerId },
         inLanguage: lang === "sv" ? ["sv", "en"] : ["en", "sv"],
       },
       {
         "@type": "Place",
         "@id": `${SITE_ORIGIN}/#location`,
         name: nap.address.addressLocality,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: nap.address.addressLocality,
-          addressRegion: nap.address.addressRegion,
-          addressCountry: nap.address.addressCountry,
-        },
+        address: postalAddress,
       },
       {
         "@type": "Service",
         "@id": `${SITE_ORIGIN}/#listing-service`,
         name: listingServiceName,
         description: listingServiceDescription,
-        provider: { "@id": `${SITE_ORIGIN}/#organization` },
+        provider: { "@id": sellerId },
         areaServed: {
           "@type": "Country",
           name: areaServed,
@@ -79,17 +75,17 @@ export function buildSchemaGraph(description: string, lang: NapLanguage) {
         },
       },
       {
-        "@type": ["Product", "Vehicle"],
+        "@type": "Vehicle",
         additionalType: "https://schema.org/Boat",
-        "@id": `${SITE_ORIGIN}/#yacht`,
+        "@id": yachtId,
         name: nap.boat.name,
         description,
         image: SCHEMA_IMAGES,
-        category: "Motor yacht",
+        vehicleModelDate: String(nap.boat.yearBuilt),
         productionDate: String(nap.boat.yearBuilt),
         brand: {
           "@type": "Brand",
-          name: nap.boat.name,
+          name: nap.boat.builder,
         },
         manufacturer: {
           "@type": "Organization",
@@ -128,16 +124,19 @@ export function buildSchemaGraph(description: string, lang: NapLanguage) {
             value: nap.boat.locationLabel[lang],
           },
         ],
-        offers: {
-          "@type": "Offer",
-          url: `${SITE_ORIGIN}${nap.listing.contactPath}`,
-          availability: "https://schema.org/InStock",
-          itemCondition: "https://schema.org/UsedCondition",
-          seller: { "@id": `${SITE_ORIGIN}/#organization` },
-          areaServed: {
-            "@type": "Country",
-            name: areaServed,
-          },
+        offers: { "@id": offerId },
+      },
+      {
+        "@type": "Offer",
+        "@id": offerId,
+        url: `${SITE_ORIGIN}${nap.listing.contactPath}`,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/UsedCondition",
+        itemOffered: { "@id": yachtId },
+        seller: { "@id": sellerId },
+        areaServed: {
+          "@type": "Country",
+          name: areaServed,
         },
       },
     ],

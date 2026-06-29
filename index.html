@@ -54,19 +54,16 @@
       content="Stella Nova under gång i kvällsljus — klassisk 27-meters motoryacht till salu"
     />
     <title>Stella Nova — 27 m klassisk motoryacht till salu | Saltsjöbaden</title>
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="site-jsonld">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "Organization",
-            "@id": "https://stellanova-yacht.se/#organization",
-            "name": "Stella Nova",
-            "legalName": "Stella Nova",
-            "url": "https://stellanova-yacht.se",
-            "logo": "https://stellanova-yacht.se/favicon.svg",
+            "@type": "Person",
+            "@id": "https://stellanova-yacht.se/#seller",
+            "name": "Privat säljare",
+            "description": "Privat försäljning av motoryachten Stella Nova i Saltsjöbaden.",
             "email": "kontakt@stellanova-yacht.se",
-            "foundingDate": "1971",
             "knowsAbout": [
               "Klassiska motoryachter",
               "Yachtförsäljning",
@@ -87,7 +84,7 @@
             "@id": "https://stellanova-yacht.se/#website",
             "name": "Stella Nova",
             "url": "https://stellanova-yacht.se",
-            "publisher": { "@id": "https://stellanova-yacht.se/#organization" },
+            "publisher": { "@id": "https://stellanova-yacht.se/#seller" },
             "inLanguage": ["sv", "en"]
           },
           {
@@ -105,7 +102,8 @@
             "@type": "Service",
             "@id": "https://stellanova-yacht.se/#listing-service",
             "name": "Försäljning av klassisk motoryacht",
-            "provider": { "@id": "https://stellanova-yacht.se/#organization" },
+            "description": "Privat försäljning av den totalrenoverade 27-meters motoryachten Stella Nova i Saltsjöbaden.",
+            "provider": { "@id": "https://stellanova-yacht.se/#seller" },
             "areaServed": { "@type": "Country", "name": "Sverige" },
             "availableChannel": {
               "@type": "ServiceChannel",
@@ -114,7 +112,7 @@
             }
           },
           {
-            "@type": ["Product", "Vehicle"],
+            "@type": "Vehicle",
             "additionalType": "https://schema.org/Boat",
             "@id": "https://stellanova-yacht.se/#yacht",
             "name": "Stella Nova",
@@ -123,16 +121,28 @@
               "https://stellanova-yacht.se/images/stella-nova-2008-298.jpg",
               "https://stellanova-yacht.se/images/stella-nova-ext-5-1.jpg"
             ],
-            "category": "Motor yacht",
+            "vehicleModelDate": "1971",
             "productionDate": "1971",
+            "brand": {
+              "@type": "Brand",
+              "name": "Schiffswerft Hameln"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Schiffswerft Hameln"
+            },
             "location": { "@id": "https://stellanova-yacht.se/#location" },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://stellanova-yacht.se/contact",
-              "availability": "https://schema.org/InStock",
-              "itemCondition": "https://schema.org/UsedCondition",
-              "seller": { "@id": "https://stellanova-yacht.se/#organization" }
-            }
+            "offers": { "@id": "https://stellanova-yacht.se/#offer" }
+          },
+          {
+            "@type": "Offer",
+            "@id": "https://stellanova-yacht.se/#offer",
+            "url": "https://stellanova-yacht.se/contact",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/UsedCondition",
+            "itemOffered": { "@id": "https://stellanova-yacht.se/#yacht" },
+            "seller": { "@id": "https://stellanova-yacht.se/#seller" },
+            "areaServed": { "@type": "Country", "name": "Sverige" }
           }
         ]
       }

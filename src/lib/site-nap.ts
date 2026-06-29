@@ -1,12 +1,13 @@
 /**
  * Central NAP + entity facts — single source for UI and JSON-LD.
  * Keep footer, contact page, and schema in sync with this file.
+ *
+ * Private one-off yacht sale — no business org number or product GTIN.
  */
 export const SITE_ORIGIN = "https://stellanova-yacht.se";
 
 export const nap = {
   displayName: "Stella Nova",
-  legalName: "Stella Nova",
   email: "kontakt@stellanova-yacht.se",
   telephone: null as string | null,
   url: SITE_ORIGIN,
@@ -22,7 +23,16 @@ export const nap = {
     en: "Stockholm archipelago and Sweden",
   },
   sameAs: [] as readonly string[],
-  orgNumber: null as string | null,
+  seller: {
+    label: {
+      sv: "Privat säljare",
+      en: "Private seller",
+    },
+    description: {
+      sv: "Privat försäljning av motoryachten Stella Nova i Saltsjöbaden.",
+      en: "Private sale of the motor yacht Stella Nova in Saltsjöbaden.",
+    },
+  },
   knowsAbout: [
     "Klassiska motoryachter",
     "Yachtförsäljning",
